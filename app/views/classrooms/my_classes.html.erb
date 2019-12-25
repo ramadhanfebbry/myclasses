@@ -1,0 +1,30 @@
+<div class="col-sm-12">
+  <h1>My Classrooms</h1>
+
+  <table class="table table-stripped table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @classrooms.each do |classroom| %>
+        <tr>
+          <td><%= classroom.name %></td>
+          <td><%= classroom.description %></td>
+          <td>
+          <%= link_to 'Enrolled Students', enrolled_classroom_path(classroom) %>          
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Classroom', new_classroom_path if current_user.is_admin? %>
+
+</div>
